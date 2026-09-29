@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Landing Page</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <header>
+        <nav class="navbar">
+            <h2 class="logo">SkillCraft</h2>
+
+            <ul class="nav-links">
+                <li><a href="#home" class="active">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#portfolio">Portfolio</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Home -->
+    <section id="home" class="home">
+        <div class="home-content">
+            <p>WELCOME TO SKILLCRAFT</p>
+
+            <h1>
+                Build Your
+                <span>Digital Future</span>
+            </h1>
+
+            <p class="description">
+                We create modern, responsive and attractive
+                websites for businesses and individuals.
+            </p>
+
+            <a href="#services" class="btn">Explore Services</a>
+        </div>
+    </section>
+
+    <!-- About -->
+    <section id="about">
+        <h2>About <span>Us</span></h2>
+
+        <div class="content">
+            <div>
+                <h3>We turn ideas into digital experiences.</h3>
+
+                <p>
+                    SkillCraft focuses on creating modern and
+                    responsive websites with beautiful designs
+                    and interactive features.
+                </p>
+
+                <p>
+                    Our websites work on desktop, tablet and
+                    mobile devices.
+                </p>
+            </div>
+
+            <div class="boxes">
+                <div>
+                    <h3>50+</h3>
+                    <p>Projects</p>
+                </div>
+
+                <div>
+                    <h3>30+</h3>
+                    <p>Clients</p>
+                </div>
+
+                <div>
+                    <h3>5+</h3>
+                    <p>Years</p>
+                </div>
+
+                <div>
+                    <h3>100%</h3>
+                    <p>Commitment</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services -->
+    <section id="services">
+        <h2>Our <span>Services</span></h2>
+
+        <div class="cards">
+
+            <div class="card">
+                <h3>Web Development</h3>
+                <p>
+                    Modern and responsive websites using
+                    HTML, CSS and JavaScript.
+                </p>
+            </div>
+
+            <div class="card">
+                <h3>UI/UX Design</h3>
+                <p>
+                    Attractive and user-friendly interface
+                    designs.
+                </p>
+            </div>
+
+            <div class="card">
+                <h3>Responsive Design</h3>
+                <p>
+                    Websites that work perfectly on all
+                    screen sizes.
+                </p>
+            </div>
+
+            <div class="card">
+                <h3>JavaScript</h3>
+                <p>
+                    Interactive features and animations
+                    for modern websites.
+                </p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Portfolio -->
+    <section id="portfolio">
+        <h2>Our <span>Portfolio</span></h2>
+
+        <div class="cards">
+
+            <div class="project">
+                <h3>Project 01</h3>
+                <p>Business Landing Page</p>
+            </div>
+
+            <div class="project">
+                <h3>Project 02</h3>
+                <p>Creative Portfolio</p>
+            </div>
+
+            <div class="project">
+                <h3>Project 03</h3>
+                <p>Product Website</p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact">
+        <h2>Contact <span>Us</span></h2>
+
+        <form id="contactForm">
+
+            <input
+                type="text"
+                placeholder="Your Name"
+                required
+            >
+
+            <input
+                type="email"
+                placeholder="Your Email"
+                required
+            >
+
+            <textarea
+                placeholder="Your Message"
+                rows="5"
+                required
+            ></textarea>
+
+            <button type="submit" class="btn">
+                Send Message
+            </button>
+
+        </form>
+    </section>
+
+    <footer>
+        <p>© 2026 SkillCraft Technology</p>
+    </footer>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
