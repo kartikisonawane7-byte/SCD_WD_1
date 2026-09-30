@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Quiz Game</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #141e30, #243b55);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .quiz-container {
+            width: 500px;
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+        }
+
+        h1 {
+            text-align: center;
+            color: #243b55;
+            margin-bottom: 20px;
+        }
+
+        #question-number {
+            color: #666;
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+
+        #question {
+            font-size: 22px;
+            margin-bottom: 20px;
+        }
+
+        .option {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            background: white;
+            cursor: pointer;
+            text-align: left;
+            font-size: 16px;
+        }
+
+        .option:hover {
+            background: #f0f0f0;
+        }
+
+        .option.selected {
+            background: #dbeafe;
+            border-color: #2563eb;
+        }
+
+        #nextBtn {
+            width: 100%;
+            padding: 12px;
+            margin-top: 15px;
+            border: none;
+            border-radius: 8px;
+            background: #243b55;
+            color: white;
+            font-size: 17px;
+            cursor: pointer;
+        }
+
+        #nextBtn:hover {
+            background: #141e30;
+        }
+
+        #result {
+            text-align: center;
+            display: none;
+        }
+
+        #result h2 {
+            margin-bottom: 15px;
+            color: #243b55;
+        }
+
+        #restartBtn {
+            padding: 12px 25px;
+            border: none;
+            border-radius: 8px;
+            background: #28a745;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="quiz-container">
+
+        <div id="quiz">
+
+            <h1>Quiz Game</h1>
+
+            <p id="question-number"></p>
+
+            <h2 id="question"></h2>
+
+            <div id="options"></div>
+
+            <button id="nextBtn" onclick="nextQuestion()">
+                Next
+            </button>
+
+        </div>
+
+
+        <div id="result">
+
+            <h1>Quiz Completed!</h1>
+
+            <h2>Your Score</h2>
+
+            <p id="score"></p>
+
+            <br>
+
+            <button id="restartBtn" onclick="restartQuiz()">
+                Restart Quiz
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <script>
+
+        // Quiz Questions
+        const questions = [
+
+            {
+                question: "Which language is used to create the structure of a web page?",
+                options: ["HTML", "CSS", "JavaScript", "Python"],
+                answer: "HTML"
+            },
+
+            {
+                question: "Which language is used for styling web pages?",
+                options: ["HTML", "CSS", "Java", "C"],
+                answer: "CSS"
+            },
+
+            {
+                question: "Which language is mainly used to make web pages interactive?",
+                options: ["C", "JavaScript", "HTML", "SQL"],
+                answer: "JavaScript"
+            },
+
+            {
+                question: "Which tag is used to create a paragraph in HTML?",
+                options: ["<h1>", "<p>", "<br>", "<div>"],
+                answer: "<p>"
+            },
+
+            {
+                question: "Which symbol is used for a comment in JavaScript?",
+                options: ["//", "#", "<!-- -->", "**"],
+                answer: "//"
+            }
+        ];
+
+
+        let currentQuestion = 0;
+        let score = 0;
+        let selectedAnswer = "";
+
+
+        // Display Question
+        function showQuestion() {
+
+            selectedAnswer = "";
+
+            let q = questions[currentQuestion];
+
+            document.getElementById("question-number").innerHTML =
+                "Question " + (currentQuestion + 1) +
+                " of " + questions.length;
+
+            document.getElementById("question").innerHTML =
+                q.question;
+
+
+            let optionsDiv = document.getElementById("options");
+
+            optionsDiv.innerHTML = "";
+
+
+            q.options.forEach(function(option) {
+
+                let button = document.createElement("button");
+
+                button.innerHTML = option;
+
+                button.className = "option";
+
+
+                button.onclick = function() {
+
+                    selectedAnswer = option;
+
+                    let allOptions =
+                        document.querySelectorAll(".option");
+
+                    allOptions.forEach(function(btn) {
+                        btn.classList.remove("selected");
+                    });
+
+                    button.classList.add("selected");
+                };
+
+
+                optionsDiv.appendChild(button);
+
+            });
+
+        }
+
+
+        // Next Question
+        function nextQuestion() {
+
+            if (selectedAnswer === "") {
+
+                alert("Please select an answer.");
+
+                return;
+            }
+
+
+            if (selectedAnswer === questions[currentQuestion].answer) {
+
+                score++;
+
+            }
+
+
+            currentQuestion++;
+
+
+            if (currentQuestion < questions.length) {
+
+                showQuestion();
+
+            } else {
+
+                showResult();
+
+            }
+
+        }
+
+
+        // Show Result
+        function showResult() {
+
+            document.getElementById("quiz").style.display = "none";
+
+            document.getElementById("result").style.display = "block";
+
+
+            document.getElementById("score").innerHTML =
+                "You scored " + score +
+                " out of " + questions.length;
+
+        }
+
+
+        // Restart Quiz
+        function restartQuiz() {
+
+            currentQuestion = 0;
+
+            score = 0;
+
+            document.getElementById("quiz").style.display = "block";
+
+            document.getElementById("result").style.display = "none";
+
+            showQuestion();
+
+        }
+
+
+        // Start Quiz
+        showQuestion();
+
+    </script>
+
+</body>
+</html>
